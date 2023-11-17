@@ -60,7 +60,7 @@ jobs:
           path: |
             ./DB/dev.txt
           key: ${{ runner.os }}-text-file-${{ hashFiles('./DB/dev.txt') }}
-      - name: Read SIT file
+      - name: Read SIT files
         run: echo "cache1=$(cat ./DB/dev.txt)" >> $GITHUB_ENV
       - name: Check if there are changes in 'DB' directory
         run: |
@@ -70,7 +70,7 @@ jobs:
             echo "No changes in 'DB' directory."
           fi
       - name: Fetch all history for all tags and branches
-        run: |
+        run: | 
             git fetch --unshallow
             git checkout main && git checkout -
             git checkout feature && git checkout -
